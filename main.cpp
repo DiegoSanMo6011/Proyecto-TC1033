@@ -18,98 +18,62 @@ using namespace std;
 /*
 ===========================Clases===========================
 */
-#include "Leones.h"
-#include "Tigre.h"
-#include "Jaguares.h"
+#include "Sano.h"
+#include "Enfermos.h"
+#include "Bebe.h"
 /*
 ===========================Main===========================
 */
 int main(){
     //variables
-    int edad, tiempo;
-    float tam, comida, agua;
     int nivel;
     //estatuto if
-    cout<<"Teclea:\n 1. Leones\n 2. Tigres\n 3. Jaguares"<<endl;
+    cout<<"Teclea:\n 1. Animal Sano\n 2. Animal enfermo\n 3. Animal Bebe"<<endl;
     cin>>nivel;
     if (nivel==1)
     {
     /*
-    ===========================Leones===========================
+    ===========================Sano===========================
     */
-
-        //inputs
-        cout<<"Teclea la edad del leon"<<endl;
-        cin>>edad;
-        cout<<"Teclea el tamano del leon"<<endl;
-        cin>>tam;
-        cout<<"Teclea la cantidad de comida \ncon la que cuenta el leon"<<endl;
-        cin>>comida;
-        cout<<"Teclea la cantidad de agua \ncon la que cuenta el leon"<<endl;
-        cin>>agua;
-        cout<<"Teclea el numero de dias transcurridos"<<endl;
-        cin>>tiempo;
-         //declaracion de objeto
-        Leon leon_1(edad,tam,comida,agua);
-        leon_1.aliemento_restante(tiempo);
-        //outputs
-        cout<<"La comida restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<leon_1.get_com()<<endl;
-        leon_1.agua_restante(tiempo);
-        cout<<"El agua restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<leon_1.get_agua()<<endl;
+    int ancho;
+    int largo;
+    cout<<"introduce el ancho y largo del habitat: "<<endl;
+    cin>>ancho,largo;
+    Sano san_1(largo,ancho);
+    san_1.genera_coord(largo,ancho);
     }
     if (nivel==2)
     {
     /*
-    ===========================Tigres===========================
+    ===========================Enfermo===========================
     */
-        //inputs
-        cout<<"Teclea la edad del Tigre"<<endl;
-        cin>>edad;
-        cout<<"Teclea el tamano del Tigre"<<endl;
-        cin>>tam;
-        cout<<"Teclea la cantidad de comida \ncon la que cuenta el Tigre"<<endl;
-        cin>>comida;
-        cout<<"Teclea la cantidad de agua \ncon la que cuenta el Tigre"<<endl;
-        cin>>agua;
-        cout<<"Teclea el numero de dias transcurridos"<<endl;
-        cin>>tiempo;
-        //declaracion de objeto
-        Tigre tigre_1(edad,tam,comida,agua);
-        tigre_1.aliemento_restante(tiempo);
-        //outputs
-        cout<<"La comida restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<tigre_1.get_com()<<endl;
-        tigre_1.agua_restante(tiempo);
-        cout<<"El agua restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<tigre_1.get_agua()<<endl;
+   float temp, peso, altura;
+   int frec;
+   cout<<"introduce temperatura, peso y altura"<<endl;
+   cin>> temp>> peso >>altura;
+   cout<<"introduce la frecuacia cardiaca"<<endl;
+   cin>> frec;
+   Enfermo enf_1(temp,frec,peso,altura);
+    enf_1.print_datos(temp,frec,peso,altura);
+
+        
     }
     if (nivel==3)
     {
     /*
-    ===========================Jaguares===========================
+    ===========================Bebe===========================
     */
-        //inputs
-        cout<<"Teclea la edad del Jaguar"<<endl;
-        cin>>edad;
-        cout<<"Teclea el tamano del Jaguar"<<endl;
-        cin>>tam;
-        cout<<"Teclea la cantidad de comida \ncon la que cuenta el Jaguar"<<endl;
-        cin>>comida;
-        cout<<"Teclea la cantidad de agua \ncon la que cuenta el Jaguar"<<endl;
-        cin>>agua;
-        cout<<"Teclea el numero de dias transcurridos"<<endl;
-        cin>>tiempo;
-        //declaracion de objeto
-        Jaguar jaguar_1(edad,tam,comida,agua);
-        jaguar_1.aliemento_restante(tiempo);
-        //outputs
-        cout<<"La comida restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<jaguar_1.get_com()<<endl;
-        jaguar_1.agua_restante(tiempo);
-        cout<<"El agua restante despues de "<<tiempo<<" dias es:"<<endl;
-        cout<<jaguar_1.get_agua()<<endl;
+   int tiempomama,mes_vida;
+   bool estatus;
+   cout<< "introduce tiempo con madre, mes de vida"<<endl;
+   cin>>tiempomama>>mes_vida;
+   estatus=false;
+   Bebe bebe_1(tiempomama,mes_vida, estatus);
+   cout<< bebe_1.get_mes();
+   cout<< bebe_1.get_estatus();
+
+
+
     }   
 return 0;
 }
