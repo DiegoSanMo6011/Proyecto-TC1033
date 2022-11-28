@@ -1,67 +1,71 @@
 /*
-* Diego Gerardo Sánchez Moreno A01276011
+ * Proyecto TC1033
+ * Diego Gerardo Sanchez Moreno
+ * A01276011
+ * 
+ */
 
-* Clase Bebe que:
-* Atributos: tiempomama, mes_de_vida, estatus
-* Metodos: getters(), setters(), estatus_vacunas(vacunas, estatus)
-* Constructor
+/*
+ * Clase Bebe hereda de clase animal y compone a Zoo
+ */
 
-*/
-#include <iostream>
-using namespace std;
+#ifndef BEBE_H
+#define BEBE_H
+
+#include "animal.h"
 #include <string>
-class Bebe{
+#include <sstream>
+
+using namespace std;
+
+class Bebe: public Animal{
 
 private:
-  /*
-  ==========================Atributos==========================
-  */
-  int tiempomama;
+
   int mes_de_vida;
-  bool estatus;
+  string vacunado;
 
 public:
-  /*
-  ==========================Constructores==========================
-  */
-  Bebe(): tiempomama(0),mes_de_vida(0), estatus(false){};//define los valores deafault
-  Bebe(int tiempo, int mes, bool est): tiempomama(tiempo), mes_de_vida(mes), estatus(est){};
-  /*==========================Guetters==========================*/
-  int get_tiempo();
-  int get_mes();
-  bool get_estatus();
-  /*
-  ==========================Setters==========================
-  */
-  void set_tiempo(int);
-  void set_mes(int);
-  void set_estatus(bool);
-
+  //definicion de contructores
+  Bebe(){ 
+    habitat = ""; identificacion = 0; especie = "";
+  }
+  Bebe(string habi, int id, string esp, int mes, string vac):Animal (habi,id,esp){
+    mes_de_vida=mes;vacunado=vac;
+  }
+  //metodos
+  string to_string();
+  double gastos();
 
 };
 
-  /*
-  ==============guetters=============
-  */
- int Bebe::get_tiempo(){
-   return tiempomama;
- }
- int Bebe::get_mes(){
-   return mes_de_vida;
- }
- bool Bebe::get_estatus(){
-  return estatus;
- }
+/**
+ * Metodo que calcula el gasto que genera cada bebe
+ *
+ * @param
+ * @return double gastos 
+*/
+double Bebe::gastos(){
+  int gastos_total;
+  gastos_total = mes_de_vida*1275.54;
+  return gastos_total;
+  
+}
 
-  /*
-  ==============setters=============
-  */
- void Bebe::set_tiempo(int tiempo){
-  tiempomama=tiempo;
- }
-  void Bebe::set_mes(int mes){
-  mes_de_vida=mes;
- }
-  void Bebe::set_estatus(bool est){
-  estatus=est;
- }
+/**
+ * Almacena los valores de las variables de instancia en una cadena de
+ * texto.
+ *
+ * @param
+ * @return string con los datos de Bebe
+*/
+string Bebe::to_string(){
+  stringstream aux;
+  aux << "El habitat es: " << habitat << "\nEl ID es: "<< identificacion 
+  << "\nLa especie es: "<<especie<<"\nSu mes de vid es: "<< mes_de_vida
+  <<"\nEstado de vacunacion: "<<vacunado<<"\nLos gastos por mes es de: "<<gastos()<<endl;
+  return aux.str();
+}
+
+
+#endif //BEBE_H

@@ -1,89 +1,73 @@
 /*
-* Diego Gerardo Sánchez Moreno A01276011
+ * Proyecto TC1033
+ * Diego Gerardo Sanchez Moreno
+ * A01276011
+ * 
+ */
 
-* Clase Enfermos que:
-* Atributos: temp, freccard, peso, altura
-* Metodos: getters(), setters(), print_datos(temp, freccard, peso, altura)
-* Constructor
+/*
+ * Clase Enfermo hereda de clase animal y compone a Zoo
+ */
 
-*/
-#include <iostream>
+#ifndef ENFERMOS_H
+#define ENFERMOS_H
+
+#include "animal.h"
+#include <string>
+#include <sstream>
+
 using namespace std;
-class Enfermo{
+
+class Enfermo: public Animal{
 
 private:
-  /*
-  ==========================Atributos==========================
-  */
-  float temp;
+
+  float temperatura;
   int freccard;
   float peso;
   float altura;
+  double gasto;
   
-
 public:
-  /*
-  ==========================Constructores==========================
-  */
-  Enfermo(): temp(0.0), freccard(0), peso(0.0), altura(0.0){};//define los valores deafault
-  Enfermo(float temperatura, int frec, float pes, float alt): temp(temperatura), freccard(frec), peso(pes), altura(alt){};
-  /*==========================Guetters==========================*/
-  float get_temp();
-  int get_freccard();
-  float get_peso();
-  float get_altura();
-  /*
-  ==========================Setters==========================
-  */
-  void set_temp(float);
-  void set_freccard(int);
-  void set_peso(float);
-  void set_altura(float);
-  /*
-  ==========================Funciones==========================
-  */
-  void print_datos(float, int, float, float);
+  //definicion de constructores
+  Enfermo(){ 
+    habitat = ""; identificacion = 0; especie = "";
+    }
+  Enfermo(string habi, int id, string esp,float temp, int frec, float pes, float alt,double gast):Animal (habi,id,esp){
+    temperatura=temp; freccard=frec; peso=pes; altura=alt; gasto=gast;
+  }
+  //metodos
+  string to_string();
+  double gastos();
 
 };
+/**
+ * Metodo para acceder al dato de gastos
+ * 
+ * @param
+ * @return double gastos
+*/
+double Enfermo::gastos(){
+  return gasto;
+}
 
-  /*
-  ==============guetters=============
-  */
-  float Enfermo::get_temp(){
-    return temp;
-  }
-  int Enfermo::get_freccard(){
-    return freccard;
-  }
-  float Enfermo::get_peso(){
-    return peso;
-  }
-  float Enfermo::get_altura(){
-    return altura;
-  }
-  /*
-  ==============setters=============
-  */
-  void Enfermo::set_temp(float temperatura){
-    temp=temperatura;
- }
-  void Enfermo::set_freccard(int frec){
-    freccard=frec;
- }
-  void Enfermo::set_peso(float pes){
-    peso=pes;
- }
-  void Enfermo::set_altura(float alt){
-    altura=alt;
- }
+/**
+ * Almacena los valores de las variables de instancia en una cadena de
+ * texto.
+ *
+ * @param
+ * @return string con los datos de Enfermo
+*/
+string Enfermo::to_string(){
+  stringstream aux;
+  aux << "El habitat es: " << habitat << "\nEl ID es: "<< identificacion 
+  << "\nLa especie es: "<<especie<<"\nSu temperatura es: "<< temperatura
+  <<"\nSu frecuencia cardiaca es: "<<freccard <<"\nSu peso es: "<< peso
+  <<"\nSu altura es: "<<altura<<"\nLos gastos por mes es de: "<<gastos()<<endl;
+  return aux.str();
+}
 
-  /*
-  ==============imrpimir datos=============
-  */
-  void Enfermo::print_datos(float temp, int freccard, float peso, float altura){
-    cout<<"La temperatura del animal es: "<<temp<<endl;
-    cout<<"La frecuencia cardiaca del animal es: "<<freccard<<endl;
-    cout<<"El peso del animal es: "<<peso<<endl;
-    cout<<"La altura del animal es: "<<altura<<endl;
-  }
+
+#endif //BEBE_H
+
 
