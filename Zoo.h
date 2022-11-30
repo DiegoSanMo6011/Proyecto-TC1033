@@ -50,7 +50,7 @@ class Zoo{
         void gastos_totales();
         void agrega_bebe(string habi, string esp, int mes, string vac);
         void agrega_enfermo(string habi, string esp,float temp, int frec, float pes, float alt,double gast);
-        void agrega_sano(string habi, string esp,int largo, int ancho, int day);
+        void agrega_sano(string habi, string esp,int largo, int ancho);
 };
 
 /**
@@ -93,8 +93,8 @@ void Zoo::crea_ejemplo_enfermo(){
  * @return
 */
 void Zoo::crea_ejemplo_sano(){
-    sano[0]= Sano("sabana", isano, "Panthera leo",20,35,10);
-    sano[1]= Sano("glaciar", isano, "Ursus Maritimus",30,45,25);
+    sano[0]= Sano("sabana", isano, "Panthera leo",10,5);
+    sano[1]= Sano("glaciar", isano, "Ursus Maritimus",12,32);
     isano += 1;
 }
 
@@ -136,10 +136,6 @@ void Zoo::muestra_enfermos(){
  */
 void Zoo::muestra_sano(){
     for(int i=1; i<=isano; i++){
-        sano[i].genera_coord();
-        sano[i].agrega();
-        cout<<"Las coordenadas donde se debe poner la comida son: "<<endl;
-        sano[i].muestra_coord();
         cout << sano[i].to_string()<<"\n\n";
     }
 }
@@ -259,9 +255,9 @@ void Zoo::agrega_enfermo(string habi, string esp,float temp, int frec, float pes
  * @param
  * @return
  */
-void Zoo::agrega_sano(string habi, string esp,int largo, int ancho, int day){
+void Zoo::agrega_sano(string habi, string esp,int largo, int ancho){
     isano +=  1;
-    Sano aux(habi, ibebe+100, esp, largo, ancho, day );
+    Sano aux(habi, ibebe+100, esp, largo, ancho);
     sano[isano] = aux;
     
 }

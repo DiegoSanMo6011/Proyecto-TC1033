@@ -51,7 +51,7 @@ int main(){
     int opcion=0;
     int temp_mes;
     int temp_freccard;  
-    int temp_largo, temp_ancho, temp_dias;
+    int temp_largo, temp_ancho;
     float temp_temperatura, temp_peso, temp_altura;
     double temp_gasto;
     string temp_habitat, temp_vacunado;
@@ -134,9 +134,7 @@ int main(){
                 cin >> temp_largo;
                 cout<<"Dime el ancho del habitat: "<<endl;
                 cin >> temp_ancho;
-                cout<<"Dime la cantidad de dias para los que necesitas coordenadas: "<<endl;
-                cin >> temp_dias;
-                zoo.agrega_sano(temp_habitat,temp_especie,temp_largo,temp_ancho,temp_dias);
+                zoo.agrega_sano(temp_habitat,temp_especie,temp_largo,temp_ancho);
                 break;
 
         }       
